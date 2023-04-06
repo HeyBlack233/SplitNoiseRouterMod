@@ -8,7 +8,7 @@
     "HeyBlack"
   ],
   "contact": {
-    "sources": "https://github.com/HeyBlack233/RepeaterClickingSoundMod"
+    "sources": "https://github.com/HeyBlack233/SplitNoiseRouterMod"
   },
   "license": "MIT",
   "environment": "client",
@@ -18,6 +18,6 @@
   ],
   "depends": {
     "fabricloader": ">=0.14.10",
-    "minecraft": ">=1.18.2"
+    "minecraft": ">=1.19"
   }
 }

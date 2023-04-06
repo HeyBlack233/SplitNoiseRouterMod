@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "splitnoiserouter",
+  "version": "${version}",
+  "name": "SplitNoiseRouter",
+  "description": "Noise</br>Router",
+  "authors": [
+    "HeyBlack"
+  ],
+  "contact": {
+    "sources": "https://github.com/HeyBlack233/RepeaterClickingSoundMod"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {},
+  "mixins": [
+    "SplitNoiseRouter.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.10",
+    "minecraft": ">=1.18.2"
+  }
+}

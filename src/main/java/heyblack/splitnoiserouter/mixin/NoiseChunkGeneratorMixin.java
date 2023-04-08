@@ -2,24 +2,39 @@ package heyblack.splitnoiserouter.mixin;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.structure.StructureSet;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryEntryList;
+import net.minecraft.world.biome.source.BiomeSource;
 import net.minecraft.world.biome.source.util.VanillaTerrainParameters;
+import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.chunk.NoiseChunkGenerator;
 import net.minecraft.world.gen.densityfunction.DensityFunction;
 import net.minecraft.world.gen.noise.NoiseRouter;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Optional;
 
 @Environment(EnvType.CLIENT)
 @Mixin(NoiseChunkGenerator.class)
-public class NoiseChunkGeneratorMixin
+public abstract class NoiseChunkGeneratorMixin extends ChunkGenerator
 {
-    private NoiseRouter noiseRouter;
+
+    @Shadow @Final private NoiseRouter noiseRouter;
+
+    public NoiseChunkGeneratorMixin(Registry<StructureSet> registry, Optional<RegistryEntryList<StructureSet>> optional, BiomeSource biomeSource)
+    {
+        super(registry, optional, biomeSource);
+    }
 
     @Inject(method = "getDebugHudText", at = @At("HEAD"), cancellable = true)
     public void showMeMyCrossHair(List<String> text, BlockPos pos, CallbackInfo ci)
